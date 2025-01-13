@@ -1,0 +1,33 @@
+version: "2.0"
+stories:
+  - story: greet and ask for video
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_for_video
+      - action: action_provide_video
+
+  - story: ask for quiz
+    steps:
+      - intent: ask_for_quiz
+      - action: action_provide_quiz
+
+  - story: ask for subject
+    steps:
+      - intent: ask_for_subject
+      - action: action_explain_subject
+
+  - story: ask for resources
+    steps:
+      - intent: ask_for_resources
+      - action: action_provide_resources
+
+  - story: ask for help
+    steps:
+      - intent: ask_for_help
+      - action: action_provide_help
+
+  - story: goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
