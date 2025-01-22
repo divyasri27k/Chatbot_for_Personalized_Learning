@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Assistant Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #333;
+        }
+        #chat-container {
+            width: 80%;
+            max-width: 500px;
+            height: 400px;
+            overflow-y: auto;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            word-wrap: break-word;  /* Ensure long words break and don't overflow */
+        }
+        #user-message {
+            width: 80%;
+            max-width: 500px;
+            height: 50px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            margin: 5px 0;
+        }
+        b {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Learning Assistant Chatbot</h1>
+    <div id="chat-container"></div>
+    <textarea id="user-message" placeholder="Type your message here..."></textarea>
+    <div>
+        <button onclick="sendMessage()">Send</button>
+        <button onclick="startSpeechRecognition()">🎤 Speak</button>
+    </div>
+
+    <script>
+        // Send message to bot and get response
+        async function sendMessage() {
+            const message = document.getElementById('user-message').value;
+            if (!message.trim()) return; // Prevent empty messages
+            
+            const chatContainer = document.getElementById('chat-container');
+            chatContainer.innerHTML += `<p><b>You:</b> ${message}</p>`;
+
+            // Show loading indicator
+            chatContainer.innerHTML += `<p><b>Bot:</b> ...Loading...</p>`;
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            // Clear input field right after sending
+            document.getElementById('user-message').value = '';
+
+            // Send message to backend (Flask or other server) and get response
+            const response = await fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message })
+            });
+
+            const data = await response.json();
+
+            // Replace loading message with actual response
+            const lastBotMessage = chatContainer.querySelector('p:last-child');
+            lastBotMessage.innerHTML = `<b>Bot:</b> ${data.response}`;
+
+            // Use SpeechSynthesis to read out the bot response
+            const speech = new SpeechSynthesisUtterance(data.response);
+            window.speechSynthesis.speak(speech);
+
+            // Scroll to the bottom
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Speech recognition functionality
+        function startSpeechRecognition() {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-US';
+            recognition.start();
+
+            recognition.onresult = (event) => {
+                const spokenText = event.results[0][0].transcript;
+                document.getElementById('user-message').value = spokenText;
+            };
+
+            recognition.onerror = (event) => {
+                console.error('Speech recognition error:', event.error);
+                alert('Speech recognition failed. Please try again.');
+            };
+        }
+
+        // Allow sending messages with the "Enter" key
+        document.getElementById('user-message').addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent the default action (e.g., newline)
+                sendMessage(); // Trigger sendMessage
+            }
+        });
+    </script>
+</body>
+</html>
