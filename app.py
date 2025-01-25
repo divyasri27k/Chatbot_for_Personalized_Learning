@@ -9,7 +9,7 @@ st.markdown("""
         /* Global Styles */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f7fa;
+            background-color: #DBADD9;
             margin: 0;
             padding: 0;
         }
@@ -19,14 +19,14 @@ st.markdown("""
             font-size: 3em;
             font-weight: bold;
             text-align: center;
-            color: #4CAF50;
+            color: #2c3e50;
             text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
             margin-top: 20px;
         }
         .subheader {
             font-size: 1.5em;
             text-align: center;
-            color: #FF5722;
+            color: #811B1B;
             font-style: italic;
             letter-spacing: 2px;
             animation: pop 1s ease-out forwards;
@@ -41,7 +41,7 @@ st.markdown("""
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #ffffff;
+            background-color: #E6AFAF;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border: 1px solid #ddd;
@@ -53,17 +53,17 @@ st.markdown("""
             border-radius: 10px;
         }
         .message.user {
-            background-color: #dff0d8;
+            background-color: #B0DBE6;
             text-align: right;
         }
         .message.assistant {
-            background-color: #f0f0f0;
+            background-color: #C8B0E6;
             text-align: left;
         }
 
         /* Sidebar Styles */
         .sidebar {
-            background-color: #ffffff;
+            background-color: #651A61;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -92,7 +92,7 @@ st.markdown("""
             background-color: #45a049;
         }
         a {
-            color: #FF5722;
+            color: #007bff;
             text-decoration: none;
         }
         a:hover {
@@ -103,8 +103,8 @@ st.markdown("""
 
 # Create a creative header with a bold and centered title and a popping subheading
 st.markdown("""
-    <div class="header">🌌 EduVerse</div>
-    <div class="subheader">🚀Exploring the universe of education</div>
+    <div class="header">AcademiaBot</div>
+    <div class="subheader">Your companion in the journey of education</div>
 """, unsafe_allow_html=True)
 
 # Initialize chat history and enrolled courses
@@ -118,11 +118,11 @@ COURSE_MATERIALS = {
     "web": {
         "name": "Web Development for Beginners",
         "materials": [
-            {"name": "freeCodeCamp Web Development", "url": "https://www.freecodecamp.org/learn/responsive-web-design/"},
-            {"name": "MDN Web Docs", "url": "https://developer.mozilla.org/en-US/docs/Learn"},
-            {"name": "The Odin Project", "url": "https://www.theodinproject.com/"}
+            {"name": "Beginner course for Web Development", "url": "https://youtube.com/playlist?list=PLfqMhTWNBTe3H6c9OGXb5_6wcc1Mca52n&si=EjjRsPFo6oCej3cJ"},
+            {"name": "Source link(GFG)", "url": "https://www.geeksforgeeks.org/web-development/"},
+            {"name": "Certificate", "url": "https://www.udemy.com/courses/development/web-development/"}
         ],
-        "description": "A curated learning path for beginners in web development",
+        "description": "Master the art of building stunning, responsive websites in web development",
         "learning_path": [
             "Start with HTML & CSS basics",
             "Move on to JavaScript",
@@ -132,9 +132,9 @@ COURSE_MATERIALS = {
     "data": {
         "name": "Data Science for Beginners",
         "materials": [
-            {"name": "Coursera Python for Everybody", "url": "https://www.coursera.org/specializations/python"},
-            {"name": "DataCamp Introduction to Python", "url": "https://www.datacamp.com/courses/intro-to-python-for-data-science"},
-            {"name": "Kaggle Learn", "url": "https://www.kaggle.com/learn"}
+            {"name": "Beginner course for Data Science", "url": "https://youtu.be/-ETQ97mXXF0?si=YDpBNowP1_g3FRMk"},
+            {"name": "Source link(GFG)", "url": "https://www.geeksforgeeks.org/data-science/"},
+            {"name": "Certificate", "url": "https://www.mygreatlearning.com/data-science/free-courses"}
         ],
         "description": "A comprehensive introduction to data science and analysis",
         "learning_path": [
@@ -146,9 +146,9 @@ COURSE_MATERIALS = {
     "mobile": {
         "name": "Mobile App Development for Beginners",
         "materials": [
-            {"name": "Android Developer Fundamentals", "url": "https://developer.android.com/courses"},
-            {"name": "iOS App Development with Swift", "url": "https://developer.apple.com/tutorials/swiftui"},
-            {"name": "React Native Tutorial", "url": "https://reactnative.dev/docs/tutorial"}
+            {"name": "Beginner course for Mobile", "url": "https://youtu.be/6N5Gny4YlbU?si=SEp3DTPxKdLJjqUe"},
+            {"name": "Source link(GFG)", "url": "https://www.geeksforgeeks.org/introduction-of-mobile-applications/"},
+            {"name": "Certificate", "url": "https://www.simplilearn.com/free-app-development-course-skillup"}
         ],
         "description": "Learn to build mobile apps for iOS and Android",
         "learning_path": [
@@ -157,12 +157,37 @@ COURSE_MATERIALS = {
             "Build your first app"
         ]
     },
+    "cloud": {
+        "name": "Cloud for Beginners",
+        "materials": [
+            {"name": "Beginner course for Cloud", "url": "https://youtube.com/playlist?list=PL9ooVrP1hQOFtZ5oAAeOgi_nH-txMcDMu&si=zzx58vd0rgPZMybF"},
+            {"name": "Source link(GFG)", "url": "https://www.geeksforgeeks.org/cloud-computing/"},
+            {"name": "Certificate", "url": "https://alison.com/tag/devops"}
+        ],
+        "description": "Learn to build mobile apps for iOS and Android",
+        "learning_path": [
+            "Choose your platform (Aws/Azure)",
+            "Learn platform basics"
+        ]
+    },
+    "rasa": {
+        "name": "Rasa for Beginners",
+        "materials": [
+            {"name": "Beginner platform for Rasa", "url": "https://youtube.com/playlist?list=PLp9h3aIPyUbZyCUP4ELTaS2ajxKNWaSnU&si=mPtFFawe2q1r5nK8"},
+            {"name": "Rasa doc", "url": "https://rasa.com/docs/rasa/custom-actions"}
+        ],
+        "description": "Learn to build rasa platform ",
+        "learning_path": [
+            "Choose your platform (rasa)",
+            "Learn platform basics"
+        ]
+    },
     "ai": {
         "name": "Artificial Intelligence for Beginners",
         "materials": [
-            {"name": "Fast.ai - Practical Deep Learning", "url": "https://www.fast.ai/"},
-            {"name": "Coursera Machine Learning Specialization", "url": "https://www.coursera.org/specializations/machine-learning-introduction"},
-            {"name": "Google AI Education", "url": "https://ai.google/education/"}
+            {"name": "Beginner course for AI", "url": "https://youtu.be/0TCYAafJgRE?si=07dOrcxM5nmDqdOo"},
+            {"name": "Source link(GFG)", "url": "https://www.geeksforgeeks.org/artificial-intelligence/"},
+            {"name": "Certificate", "url": "https://alison.com/tag/artificial-intelligence"}
         ],
         "description": "Introduction to AI and machine learning concepts",
         "learning_path": [
@@ -215,17 +240,17 @@ def display_course_response(topic):
 
     # For AI-related topics, add a robotic emoji 🤖 to the response
     if topic == "ai":
-        response_text = "🤖 " + response_text
+        response_text = "👾 " + response_text
 
     st.markdown(response_text)
-    st.write("📚 **Learning Materials:**")
+    st.write("📚 *Learning Materials:*")
     for material in course['materials']:
         st.markdown(f"• [{material['name']}]({material['url']})")
 
-    st.write("\n📝 **Course Description:**")
+    st.write("\n📝 *Course Description:*")
     st.write(course['description'])
 
-    st.info("💡 **Learning Path:**\n" +
+    st.info("💡 *Learning Path:*\n" +
             "\n".join(f"{i+1}. {step}" for i, step in enumerate(course['learning_path'])) +
             "\n\nType 'show my courses' anytime to see your enrolled courses!")
 
@@ -253,7 +278,7 @@ def show_enrolled_courses():
 
         # Show materials for each course
         for course in st.session_state.enrolled_courses:
-            st.write(f"\n**Materials for {course['name']}:**")
+            st.write(f"\n*Materials for {course['name']}:*")
             for material in course['materials']:
                 st.markdown(f"• [{material['name']}]({material['url']})")
     else:
@@ -261,14 +286,14 @@ def show_enrolled_courses():
 
 def check_input_requirements(prompt):
     has_experience = any(word in prompt for word in ["beginner", "intermediate", "advanced"])
-    has_topic = any(word in prompt for word in ["web", "data", "science", "mobile", "app", "ai", "artificial"])
+    has_topic = any(word in prompt for word in ["web", "data", "science", "mobile", "app", "ai", "artificial", "cloud" , "rasa"])
 
     if not has_experience and not has_topic:
         return "Could you please mention both your experience level (beginner, intermediate, or advanced) and your area of interest? For example: 'I'm a beginner interested in web development.'"
     elif not has_experience:
         return "Please let me know your experience level (beginner, intermediate, or advanced). For example: 'I'm a beginner.'"
     elif not has_topic:
-        return "Can you specify what you'd like to learn (web development, data science, mobile apps, or artificial intelligence)?"
+        return "Can you specify what you'd like to learn (web development, data science, mobile apps,rasa, cloud or artificial intelligence)?"
     return None
 
 # Display chat messages from history
@@ -276,12 +301,12 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
         if "materials" in message:
-            st.write("📚 **Learning Materials:**")
+            st.write("📚 *Learning Materials:*")
             for material in message["materials"]:
                 st.markdown(f"• [{material['name']}]({material['url']})")
 
 # Accept user input
-if prompt := st.chat_input("What would you like to learn?"):
+if prompt := st.chat_input("Type here....."):
     prompt = prompt.lower()
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
@@ -325,6 +350,10 @@ if prompt := st.chat_input("What would you like to learn?"):
                     topic = "data"
                 elif "mobile" in prompt or "app" in prompt:
                     topic = "mobile"
+                elif "rasa" in prompt or "rasa" in prompt:
+                    topic = "rasa"
+                elif "cloud" in prompt or "web" in prompt:
+                    topic = "cloud"
                 elif "ai" in prompt or "artificial" in prompt:
                     topic = "ai"
 
@@ -338,12 +367,14 @@ if prompt := st.chat_input("What would you like to learn?"):
 
 # Add sidebar with additional information
 with st.sidebar:
-    st.header("🌍 Welcome to EduVerse: Your Gateway to the Universe of Learning! 🚀")
-    st.write("Looking for the perfect programming courses? 🤔 Whether you're a beginner or an expert, this chatbot is here to guide you to the best courses tailored to your interests and skill level! 🎯")
-    st.write("🔍 What can I help you with today?")
+    st.header("Welcome to AcademiaBot: Chat. Learn. Grow.")
+    st.write("👩‍🎓Looking to learn new programming languages or enhance your coding skills? Browse here🎯")
+    st.write("What can I help you with today? 🔍")
     st.write("Try asking about:")
     st.write("- 🌐 Web Development (Learn how to build amazing websites! 💻)")
     st.write("- 📊 Data Science (Dive into data analysis, machine learning, and more! 📈)")
     st.write("- 📱 Mobile App Development (Create your own apps for Android & iOS! 📲)")
+    st.write("- ☁ cloud (Learn how to handle cloud ! 💾)")
+    st.write("- 🌐 Rasa (Learn how to build platforms ! 💻)")
     st.write("- 🤖 Artificial Intelligence (Explore the world of smart machines and AI! 🧠)")
-    st.write("Feel free to ask me about any of these topics and let's get started on your learning journey! 🚀")
+    st.write("Feel free to ask me about any topic!🤗")
