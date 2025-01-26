@@ -1,11 +1,16 @@
 Chatbot_for_Personalized_Learning
+
 Infosys Learning Project (Demo)
+
 Installation
+
 Prerequisites
    Python 3.10 or later
    Rasa Open Source
    Virtual environment (recommended)
+   
 Setup Instructions
+
 1)Clone the Repository:
     git clone https://github.com/ayesha-2101/Chatbot_for_Personalized_Learning.git
 2)Navigate to the Project Directory
