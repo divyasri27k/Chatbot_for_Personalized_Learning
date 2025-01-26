@@ -12,7 +12,8 @@ Prerequisites
 Setup Instructions
 
 1)Clone the Repository:
-    git clone https://github.com/ayesha-2101/Chatbot_for_Personalized_Learning.git
+
+    git clone https://github.com/divyasri27k/Chatbot_for_Personalized_Learning.git
     
 2)Navigate to the Project Directory
 
