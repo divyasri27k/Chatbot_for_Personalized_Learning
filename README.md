@@ -1,4 +1,4 @@
-## Chatbot for Personalized Learning
+# Chatbot for Personalized Learning
 
 Infosys Learning Project (Demo)
 
@@ -46,13 +46,18 @@ Additional libraries as specified in requirements.txt
 # Start the Rasa Action Server:
 
    rasa run actions
+   
   
    Start the Rasa Shell:
+   
 
    rasa run -m models --enable-api --cors "*" --debug
    
+   
    Launch the Streamlit UI:
+   
 
    streamlit run app.py
+   
 
 
